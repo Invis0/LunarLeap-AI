@@ -1,11 +1,10 @@
 import { useState } from 'react';
-import { FaTwitter, FaTelegram, FaGithub, FaCopy, FaCheck } from 'react-icons/fa';
+import { FaTwitter, FaGithub, FaCopy, FaCheck } from 'react-icons/fa';
 import Logo from './Logo';
 import { Link } from 'react-router-dom';
 
 const socialLinks = {
   twitter: 'https://x.com/LunarLeap_AI',
-  telegram: 'https://t.me/LunarLeapAI',
   github: 'https://github.com/Invis0/LunarLeap-AI'
 };
 
@@ -58,7 +57,6 @@ const Footer = () => {
             <h3 className="text-lg font-bold mb-4">Join the Community</h3>
             <div className="flex space-x-4">
               <SocialLink href={socialLinks.twitter} icon={FaTwitter} label="Twitter" />
-              <SocialLink href={socialLinks.telegram} icon={FaTelegram} label="Telegram" />
               <SocialLink href={socialLinks.github} icon={FaGithub} label="GitHub" />
             </div>
             <div className="mt-6 p-4 bg-dark-primary/50 rounded-lg backdrop-blur-sm">
