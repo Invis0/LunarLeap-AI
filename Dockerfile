@@ -11,12 +11,16 @@ RUN apt-get update && apt-get install -y \
 
 WORKDIR /app
 
+# Set environment variables
+ENV NODE_ENV=production
+ENV ESBUILD_BINARY_PATH=/app/node_modules/esbuild/bin/esbuild
+
 # Copy package files
 COPY package*.json ./
 COPY .npmrc ./
 
-# Install dependencies with specific flags to avoid issues
-RUN npm ci --no-optional --ignore-scripts
+# Install dependencies
+RUN npm ci
 
 # Copy the rest of the application
 COPY . .
