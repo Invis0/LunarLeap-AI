@@ -20,8 +20,10 @@ ENV PATH /app/node_modules/.bin:$PATH
 COPY package*.json ./
 COPY .npmrc ./
 
-# Install dependencies and update lock file
+# Install dependencies with development packages
+ENV NODE_ENV=development
 RUN npm install
+RUN npm install -g vite
 
 # Copy the rest of the application
 COPY . .
@@ -29,7 +31,8 @@ COPY . .
 # Build the application
 RUN npm run build
 
-# Clean up dev dependencies
+# Switch to production and clean up
+ENV NODE_ENV=production
 RUN npm prune --production
 
 # Expose the port the app runs on
