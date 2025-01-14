@@ -1,4 +1,4 @@
-FROM node:18-slim
+FROM node:20-slim
 
 # Install Python and build dependencies
 RUN apt-get update && apt-get install -y \
@@ -33,7 +33,7 @@ RUN npm run build
 RUN npm ci --only=production
 
 # Expose the port the app runs on
-EXPOSE 4173
+EXPOSE 3000
 
 # Start the application
 CMD ["npm", "run", "start"] 
