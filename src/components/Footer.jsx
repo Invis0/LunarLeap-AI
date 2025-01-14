@@ -4,9 +4,9 @@ import Logo from './Logo';
 import { Link } from 'react-router-dom';
 
 const socialLinks = {
-  twitter: 'https://twitter.com/LunarLeapAI',
+  twitter: 'https://x.com/LunarLeap_AI',
   telegram: 'https://t.me/LunarLeapAI',
-  github: 'https://github.com/LunarLeapAI'
+  github: 'https://github.com/Invis0/LunarLeap-AI'
 };
 
 const Footer = () => {
