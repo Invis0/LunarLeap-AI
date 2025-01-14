@@ -15,8 +15,11 @@ RUN apt-get update && apt-get install -y \
 COPY package*.json ./
 COPY .npmrc ./
 
-# Install dependencies
-RUN npm install --no-optional
+# Install dependencies with platform-specific binaries
+ENV ROLLUP_SKIP_NODE_RESOLUTION=true
+RUN npm install --platform=linux --arch=x64 \
+    && npm rebuild \
+    && npm install @rollup/rollup-linux-x64-gnu
 
 # Copy source code
 COPY . .
@@ -32,13 +35,12 @@ WORKDIR /app
 # Copy built assets
 COPY --from=builder /app/dist ./dist
 COPY --from=builder /app/package*.json ./
-COPY --from=builder /app/.npmrc ./
 
 # Install production dependencies only
-RUN npm install --omit=dev --no-optional
+RUN npm install --omit=dev --no-optional --ignore-scripts
 
 # Expose port
 EXPOSE 3000
 
 # Start the application
-CMD ["npm", "run", "start"] 
+CMD ["npx", "serve", "-s", "dist", "-l", "3000"] 
