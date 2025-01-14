@@ -10,13 +10,6 @@
     "lint": "eslint . --ext js,jsx --report-unused-disable-directives --max-warnings 0",
     "preview": "vite preview"
   },
-  "config": {
-    "npm": {
-      "install": {
-        "optional": false
-      }
-    }
-  },
   "dependencies": {
     "@solana/wallet-adapter-base": "^0.9.23",
     "@solana/wallet-adapter-react": "^0.15.35",
