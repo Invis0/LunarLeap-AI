@@ -49,7 +49,7 @@ const Hero = () => {
             className="flex flex-col sm:flex-row gap-4 justify-center"
           >
             <a
-              href="https://pump.fun"
+              href="https://pump.fun/coin/52DcS47pkcb7L1XgB7TSAHhf6hpFWrCPKhyiwuNnpump"
               target="_blank"
               rel="noopener noreferrer"
               className="bg-primary hover:bg-primary-light text-black px-8 py-3 rounded-lg font-medium inline-flex items-center justify-center gap-2 transition-colors"

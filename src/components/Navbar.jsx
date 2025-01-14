@@ -11,7 +11,7 @@ const navigation = [
   { name: 'AI Tools', href: '#ai-tools' },
   { name: 'Leaderboard', href: '#leaderboard' },
   { name: 'Roadmap', href: '#roadmap' },
-  { name: 'Buy $LUNAR', href: 'https://pump.fun', external: true }
+  { name: 'Buy $LUNAR', href: 'https://pump.fun/coin/52DcS47pkcb7L1XgB7TSAHhf6hpFWrCPKhyiwuNnpump', external: true }
 ];
 
 const Navbar = ({ onWalletClick }) => {
