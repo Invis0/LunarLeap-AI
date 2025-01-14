@@ -1,41 +1,43 @@
-FROM node:20-slim
+# Build stage
+FROM node:20-slim AS builder
 
-# Install Python and build dependencies
+WORKDIR /app
+
+# Install build dependencies
 RUN apt-get update && apt-get install -y \
     python3 \
-    python-is-python3 \
     make \
     gcc \
     g++ \
     && rm -rf /var/lib/apt/lists/*
 
-WORKDIR /app
-
-# Set environment variables
-ENV NODE_ENV=production
-ENV ESBUILD_BINARY_PATH=/app/node_modules/esbuild/bin/esbuild
-ENV PATH /app/node_modules/.bin:$PATH
-
 # Copy package files
 COPY package*.json ./
 COPY .npmrc ./
 
-# Install dependencies with development packages
-ENV NODE_ENV=development
-RUN npm install
-RUN npm install -g vite
+# Install dependencies
+RUN npm install --no-optional
 
-# Copy the rest of the application
+# Copy source code
 COPY . .
 
 # Build the application
 RUN npm run build
 
-# Switch to production and clean up
-ENV NODE_ENV=production
-RUN npm prune --production
+# Production stage
+FROM node:20-slim
 
-# Expose the port the app runs on
+WORKDIR /app
+
+# Copy built assets
+COPY --from=builder /app/dist ./dist
+COPY --from=builder /app/package*.json ./
+COPY --from=builder /app/.npmrc ./
+
+# Install production dependencies only
+RUN npm install --omit=dev --no-optional
+
+# Expose port
 EXPOSE 3000
 
 # Start the application
