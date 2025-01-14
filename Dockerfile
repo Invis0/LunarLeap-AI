@@ -20,8 +20,8 @@ ENV PATH /app/node_modules/.bin:$PATH
 COPY package*.json ./
 COPY .npmrc ./
 
-# Install ALL dependencies (including dev dependencies needed for build)
-RUN NODE_ENV=development npm ci
+# Install dependencies and update lock file
+RUN npm install
 
 # Copy the rest of the application
 COPY . .
@@ -30,7 +30,7 @@ COPY . .
 RUN npm run build
 
 # Clean up dev dependencies
-RUN npm ci --only=production
+RUN npm prune --production
 
 # Expose the port the app runs on
 EXPOSE 3000
