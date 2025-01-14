@@ -14,19 +14,23 @@ WORKDIR /app
 # Set environment variables
 ENV NODE_ENV=production
 ENV ESBUILD_BINARY_PATH=/app/node_modules/esbuild/bin/esbuild
+ENV PATH /app/node_modules/.bin:$PATH
 
 # Copy package files
 COPY package*.json ./
 COPY .npmrc ./
 
-# Install dependencies
-RUN npm ci
+# Install ALL dependencies (including dev dependencies needed for build)
+RUN NODE_ENV=development npm ci
 
 # Copy the rest of the application
 COPY . .
 
 # Build the application
 RUN npm run build
+
+# Clean up dev dependencies
+RUN npm ci --only=production
 
 # Expose the port the app runs on
 EXPOSE 4173
