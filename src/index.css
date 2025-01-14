@@ -1,0 +1,98 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --primary: #0066FF;
+  --primary-light: #3385FF;
+  --dark-primary: #111111;
+  --dark-secondary: #1a1a1a;
+  --dark-accent: #222222;
+}
+
+@layer base {
+  html {
+    @apply dark;
+    @apply bg-dark-primary text-white;
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply bg-dark-primary text-white;
+    font-family: 'Inter', system-ui, -apple-system, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    overflow-x: hidden;
+  }
+
+  #root {
+    @apply min-h-screen flex flex-col;
+  }
+
+  /* Smooth scrolling for anchor links */
+  html {
+    scroll-padding-top: 80px; /* Height of fixed navbar */
+  }
+}
+
+/* Scrollbar styling */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background-color: var(--dark-secondary);
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: rgba(0, 102, 255, 0.5);
+  border-radius: 9999px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background-color: var(--primary);
+}
+
+.dark {
+  @apply bg-dark-primary text-white;
+}
+
+/* Wallet Adapter Overrides */
+.wallet-adapter-button {
+  background-color: var(--primary) !important;
+  color: white !important;
+}
+
+.wallet-adapter-button:hover {
+  background-color: var(--primary-light) !important;
+}
+
+.wallet-adapter-modal-wrapper {
+  background-color: var(--dark-secondary) !important;
+}
+
+.wallet-adapter-modal-button-close {
+  background-color: var(--dark-accent) !important;
+}
+
+.wallet-adapter-modal-title {
+  color: white !important;
+}
+
+/* Animation utilities */
+.animate-gradient {
+  background-size: 200% 200%;
+  animation: gradient 15s ease infinite;
+}
+
+@keyframes gradient {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+} 

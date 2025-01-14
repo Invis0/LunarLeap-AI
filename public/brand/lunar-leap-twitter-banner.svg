@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="1500" height="500" viewBox="0 0 1500 500" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <!-- Dark Background -->
+    <rect width="1500" height="500" fill="#0B1121"/>
+    
+    <!-- Subtle Gradient Overlay -->
+    <rect width="1500" height="500" fill="url(#bgGradient)" opacity="0.15"/>
+    
+    <!-- Content Container -->
+    <g transform="translate(450, 100)">
+        <!-- App Icon -->
+        <g transform="translate(0, 50)">
+            <!-- Blue Square Background -->
+            <rect width="120" height="120" rx="24" fill="#0066FF"/>
+            <!-- White Triangle (Rocket) -->
+            <path d="M60 30 L90 90 L30 90 Z" fill="white"/>
+        </g>
+        
+        <!-- Text -->
+        <g transform="translate(160, 105)">
+            <text font-family="Inter, system-ui, sans-serif" font-size="64" font-weight="700" fill="white">
+                Lunar<tspan fill="#0066FF">Leap</tspan> AI
+            </text>
+        </g>
+    </g>
+    
+    <!-- Definitions -->
+    <defs>
+        <linearGradient id="bgGradient" x1="0" y1="0" x2="1500" y2="500">
+            <stop offset="0%" stop-color="#0066FF" stop-opacity="0.1"/>
+            <stop offset="50%" stop-color="#3385FF" stop-opacity="0.05"/>
+            <stop offset="100%" stop-color="#0066FF" stop-opacity="0.1"/>
+        </linearGradient>
+    </defs>
+</svg> 
